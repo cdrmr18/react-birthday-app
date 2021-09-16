@@ -3,12 +3,13 @@ import data from './data';
 import List from './List';
 
 function App() {
+  const [list, setList] = useState(data);
   return (
     <main> 
       <section className="container">
         <h3>5 Birthdays Today</h3>
-        <List />
-        <button>Clear All</button>
+        <List people={list} />
+        <button onClick={()=>setList([])} >Clear All</button>
       </section>
     </main>
   )
