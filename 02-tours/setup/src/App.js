@@ -13,7 +13,7 @@ function App() {
     setTours(updatedTours);
   }
    
-  const fetchTours = async () => {
+  const getTours = async () => {
     setLoading(true)
     try {
       const response = await fetch(url)
@@ -27,7 +27,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetchTours()
+    getTours()
   }, [])
   if (loading) {
     return (
@@ -37,6 +37,14 @@ function App() {
     )
   }
 
+  if (tours.length < 1) {
+    return <main>
+      <div class="title">
+        <h2>Sorry there are no more tours.</h2>
+        <button class="btn" onClick={() => getTours()}>Refresh</button>
+      </div>
+    </main>
+  }
 
   return (
     <main>
