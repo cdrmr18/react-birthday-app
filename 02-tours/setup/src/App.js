@@ -8,7 +8,7 @@ function App() {
   const [tours, setTours] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const getTours = async () => {
+  const fetchTours = async () => {
     setLoading(true)
     try {
       const response = await fetch(url)
@@ -20,16 +20,20 @@ function App() {
       console.log(error)
     }
   }
-
   useEffect(() => {
-      getTours()
-      }, [])
-      if (loading) {
-        return (
-          <div>
-            <Loading />
-          </div>
-        )
+    fetchTours()
+  }, [])
+  if (loading) {
+    return (
+      <main>
+        <Loading />
+      </main>
+    )
+  }
+
+  const deleteTourInfo = (id) => {
+     const updatedTours = tours.filter((tour)=> tour.id === id)
+     setTours(updatedTours);
    }
 
   return (
@@ -38,7 +42,7 @@ function App() {
         <h2>Tours</h2>
         <div className="underline"></div>
       </div>
-      <Tours tours={tours} />
+      <Tours tours={tours} deleteTourInfo={deleteTourInfo} />
     </main>
   )
 }
