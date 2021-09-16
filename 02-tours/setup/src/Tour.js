@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 
-const Tour = () => {
+const Tour = ({ id, image, info, name, price }) => {
+  const [readMore, setReadMore] = useState(false);
   
-
   return (
     <section>
-      <div className="title">
-        <h2>tours</h2>
-        <div className="underline"></div>
-      </div>
       <div>
         <article className="single-tour">
           <img src="" alt="" />
@@ -18,7 +14,7 @@ const Tour = () => {
                 details 
                 <button>read more</button>
               </p>
-              <button class="delete-btn">Not Interested</button>
+              <button className="delete-btn">Not Interested</button>
             </div>
           </footer>
         </article>
