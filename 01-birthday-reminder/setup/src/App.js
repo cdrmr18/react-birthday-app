@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 import data from './data';
 import List from './List';
+
 function App() {
-  return <h2>reminder project setup</h2>;
+  return (
+    <main> 
+      <section className="container">
+        <h3>5 Birthdays Today</h3>
+        <List />
+        <button>Clear All</button>
+      </section>
+    </main>
+  )
 }
 
 export default App;
