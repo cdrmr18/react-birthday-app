@@ -9,7 +9,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   const deleteTourInfo = (id) => {
-    const updatedTours = tours.filter((tour)=> tour.id === id)
+    const updatedTours = tours.filter((tour)=> tour.id !== id)
     setTours(updatedTours);
   }
    
