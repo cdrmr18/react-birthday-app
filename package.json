@@ -1,0 +1,22 @@
+{
+  "name": "react-projects",
+  "version": "1.0.0",
+  "description": "Practice react app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node your-script.js"
+}
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdrmr18/react-birthday-app.git"
+  },
+  "author": "Kathy Tavia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cdrmr18/react-birthday-app/issues"
+  },
+  "homepage": "https://github.com/cdrmr18/react-birthday-app#readme"
+}
