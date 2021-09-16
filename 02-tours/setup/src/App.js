@@ -8,6 +8,11 @@ function App() {
   const [tours, setTours] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const deleteTourInfo = (id) => {
+    const updatedTours = tours.filter((tour)=> tour.id === id)
+    setTours(updatedTours);
+  }
+   
   const fetchTours = async () => {
     setLoading(true)
     try {
@@ -20,6 +25,7 @@ function App() {
       console.log(error)
     }
   }
+
   useEffect(() => {
     fetchTours()
   }, [])
@@ -31,10 +37,6 @@ function App() {
     )
   }
 
-  const deleteTourInfo = (id) => {
-     const updatedTours = tours.filter((tour)=> tour.id === id)
-     setTours(updatedTours);
-   }
 
   return (
     <main>
