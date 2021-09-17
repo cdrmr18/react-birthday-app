@@ -15,8 +15,10 @@ const Review = () => {
   }
 
   const reduceIndex = () => {
-    if (index >= 0) {
-
+    if (index === 0) {
+      setIndex(people.length - 1);
+    } else {
+      setIndex(index - 1);
     }
   }
 
