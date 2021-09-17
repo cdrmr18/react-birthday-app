@@ -4,6 +4,8 @@ import Categories from './Categories';
 import items from './data';
 
 function App() {
+  const [menuItems, setMenuItems] = useState(items);
+
   return (
     <main>
       <section className="menu section">
@@ -11,19 +13,8 @@ function App() {
           <h2>Our Menu</h2>
           <div className="underline"></div>
         </div>
-
-        <div className="btn-container">
-          <button className="filter-btn">All</button>
-          <button className="filter-btn">breaksfast</button>
-          <button className="filter-btn">lunch</button>
-          <button className="filter-btn">shakes</button>
-        </div>
-
-        <div className="section-center">
-          {items.map((item)=>{
-            return <Menu key={item.id} {...item} />
-          })}
-        </div>
+        <Categories />
+        <Menu items={menuItems}/>
       </section>
     </main>
   )
