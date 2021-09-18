@@ -3,7 +3,27 @@ import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import { FaQuoteRight } from 'react-icons/fa';
 import data from './data';
 function App() {
-  return <h2>slider project setup</h2>;
+  return (
+    <section className="section">
+      <div className="title">
+        <h2><span>/</span>reviews</h2>
+      </div>
+      <div className="section-center">
+        <article className="activeSlide">
+          <img src="" alt="" className="person-img" />
+          <h4></h4>
+          <p className="title"></p>
+          <p className="text"></p>
+          <FaQuoteRight />
+        </article>
+        <article className="nextSlide"></article>
+        <article className="nextSlide"></article>
+        <article className="lastSlide"></article>
+        <button className="prev"><FiChevronLeft /></button>
+        <button className="next"><FiChevronRight /></button>
+      </div>
+    </section>
+  )
 }
 
 export default App;
