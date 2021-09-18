@@ -6,10 +6,11 @@ const url = 'https://course-api.com/react-tabs-project'
 function App() {
   const [experience, setExperience] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [idx, setIdx] = useState(0);
 
   const getExperienceData = async () => {
     const response = await fetch(url);
-    const experienceData = response.json()
+    const experienceData = await response.json()
     setExperience(experienceData);
     setLoading(false);
   }
@@ -26,25 +27,30 @@ function App() {
     )
   }
 
+  const {company, dates, duties, id, title} = experience[idx]
   return (
-    <section className="section">
+    <section className="section" key={id}>
       <div className="title">
         <h2>experience</h2>
         <div className="underline"></div>
       </div>
       <div className="jobs-center">
         <div className="btn-container">
-          <button className="job-btn false">TOMMY</button>
-          <button className="job-btn active-btn">TOMMY</button>
+          {experience.map((exp, index)=>{
+            return <button className={`job-btn ${index === idx && 'active-btn'}`} onClick={() => setIdx(index)}>{exp.company}</button>
+          })}
         </div>
         <article className="job-info">
-          <h3>Engineering Intern</h3>
-          <h4>cooker</h4>
-          <p className="job-date">Nov 2020</p>
-          <div className="job-desc">
-            <FaAngleDoubleRight className="job-icon" />
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, minus!</p>
-          </div>
+          <h3>{title}</h3>
+          <h4>{company}</h4>
+          <p className="job-date">{dates}</p>
+          {duties.map((duty)=>{
+            return (
+              <div className="job-desc">
+                <FaAngleDoubleRight className="job-icon" /> 
+                <p>{duty}</p>
+              </div>
+          )})}
         </article>
       </div>
       <button type="button" className="btn">more info</button>
