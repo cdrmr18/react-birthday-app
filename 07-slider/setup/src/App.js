@@ -3,6 +3,9 @@ import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import { FaQuoteRight } from 'react-icons/fa';
 import data from './data';
 function App() {
+  const [value, setValue] = useState(0);
+
+  const {image, name, title, quote} = data[value]
   return (
     <section className="section">
       <div className="title">
@@ -10,15 +13,15 @@ function App() {
       </div>
       <div className="section-center">
         <article className="activeSlide">
-          <img src="" alt="" className="person-img" />
-          <h4></h4>
-          <p className="title"></p>
-          <p className="text"></p>
-          <FaQuoteRight />
+          <img src={image} alt={name} className="person-img" />
+          <h4>{name}</h4>
+          <p className="title">{title}</p>
+          <p className="text">{quote}</p>
+          <FaQuoteRight className="icon" />
         </article>
+        {/* <article className="nextSlide"></article>
         <article className="nextSlide"></article>
-        <article className="nextSlide"></article>
-        <article className="lastSlide"></article>
+        <article className="lastSlide"></article> */}
         <button className="prev"><FiChevronLeft /></button>
         <button className="next"><FiChevronRight /></button>
       </div>
