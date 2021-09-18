@@ -20,6 +20,14 @@ function App() {
       setValue(value - 1);
     }
   }
+
+  useEffect(()=>{
+    let slider = setInterval(decreaseValue, 5000);
+    return () => {
+      clearInterval(slider);
+    };
+  })
+
   const {image, name, title, quote} = data[value]
   return (
     <section className="section">
@@ -34,9 +42,6 @@ function App() {
           <p className="text">{quote}</p>
           <FaQuoteRight className="icon" />
         </article>
-        {/* <article className="nextSlide"></article>
-        <article className="nextSlide"></article>
-        <article className="lastSlide"></article> */}
         <button className="prev" onClick={decreaseValue}><FiChevronLeft /></button>
         <button className="next" onClick={increaseValue}><FiChevronRight /></button>
       </div>
