@@ -5,6 +5,21 @@ import data from './data';
 function App() {
   const [value, setValue] = useState(0);
 
+  const increaseValue = () => {
+    if (value === data.length - 1) {
+      setValue(0);
+    } else {
+      setValue(value + 1);
+    }
+  }
+
+  const decreaseValue = () => {
+    if (value === 0) {
+      setValue(data.length - 1);
+    } else {
+      setValue(value - 1);
+    }
+  }
   const {image, name, title, quote} = data[value]
   return (
     <section className="section">
@@ -22,8 +37,8 @@ function App() {
         {/* <article className="nextSlide"></article>
         <article className="nextSlide"></article>
         <article className="lastSlide"></article> */}
-        <button className="prev"><FiChevronLeft /></button>
-        <button className="next"><FiChevronRight /></button>
+        <button className="prev" onClick={decreaseValue}><FiChevronLeft /></button>
+        <button className="next" onClick={increaseValue}><FiChevronRight /></button>
       </div>
     </section>
   )
