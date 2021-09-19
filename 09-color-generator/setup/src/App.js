@@ -12,7 +12,7 @@ function App() {
     e.preventDefault();
     try {
       let colors = new Values(color).all(10)
-      console.log(colors);
+      setList(colors)
     } catch (error) {
       setError(true);
       console.log(error);
@@ -20,26 +20,29 @@ function App() {
   }
   return (
    <>
-      <section className="container">
+      <section className='container'>
         <h3>color generator</h3>
-        <form action="" onSubmit={handleSubmit}>
-          <input 
-          type="text" 
-          value={color} 
-          placeholder="#f15025" 
-          onChange={(e)=>setColor(e.target.value)}
-          className={`${error? 'error' : null}`} />
-          <button className="btn" type="submit">Submit</button>
+        <form onSubmit={handleSubmit}>
+          <input
+            type='text'
+            value={color}
+            onChange={(e) => setColor(e.target.value)}
+            placeholder='#f15025'
+            className={`${error ? 'error' : null}`}
+          />
+          <button className='btn' type='submit'>
+            submit
+          </button>
         </form>
       </section>
       <section className="colors">
-        <article className="color false" style={{backgroundColor:"rgb(255, 255, 255)"}}>
-          <p className="percent-value">List</p>
-          <p className="color-value"></p>
-        </article>
+        {list.map((color, index)=>{
+          return <SingleColor key={index} {...color} index={index} hexColor={color.hex} />
+        })}
       </section>
    </>
   )
 }
 
 export default App
+
