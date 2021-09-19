@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import data from './data';
 
 function App() {
-  const [text, setText] = useState(data); 
+  const [text, setText] = useState([]); 
   const [count, setCount] = useState(0);
 
   const handleCount = (e) => {
     setCount(e.target.value);
+  }
+  const handleText = (e) => {
+     e.preventDefault();
+    setText(data.slice(0,count));
   }
 
   return (
@@ -15,11 +19,15 @@ function App() {
       <form action="" className="lorem-form">
         <label htmlFor="amount">paragraphs:</label>
         <input type="number" value={count} name="amount" id="amount" onChange={handleCount}/>
-        <button className="btn">generate</button>
+        <button className="btn" onClick={handleText}>generate</button>
       </form>
       <article className="lorem-text">
-        {text.map((paragrapgh)=>{
-          return <p>{paragrapgh}</p>
+        {text.map((paragrapgh, index)=>{
+          if (count <= 0) {
+            return;
+          } else {
+            return <p key={index}>{paragrapgh}</p>
+          }
         })}
       </article>
     </section>
