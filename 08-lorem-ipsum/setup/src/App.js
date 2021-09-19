@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
 import data from './data';
 function App() {
-  
+ const [text, setText] = useState(data); 
   
   return (
-  <h2>lorem ipsum project setup</h2>
+    <section className="section-center">
+      <h3>TIRED OF BORING LOREM IPSUM?</h3>
+      <form action="" className="lorem-form">
+        <label htmlFor="amount">paragraphs:</label>
+        <input type="number" />
+        <button className="btn">generate</button>
+      </form>
+      <article className="lorem-text">
+        {text.map((paragrapgh)=>{
+          return <p>{paragrapgh}</p>
+        })}
+      </article>
+    </section>
     )
 }
 
